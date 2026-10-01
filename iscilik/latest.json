@@ -1,9 +1,9 @@
 {
-  "version": "1.1.2",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.1.2/IscilikDosyasi_v1.1.2_Windows.zip",
+  "version": "1.2.0",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.0/IscilikDosyasi_v1.2.0_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "cbff68e51e404d91924a6762698c02cc87499c5f77dd0941356b4e2fa862272d",
-  "release_notes": "Kritik düzeltme: Program içinden İndir ve Güncelle işleminde görülen Windows klasör kilidi/Rename-Item hatası giderildi. Güncelleyici artık program klasörü dışında çalışır. 7 deplasman kaydı (Bursaspor ve Hatayspor hariç) korunur.",
+  "sha256": "984bc3b1718a0699c176b539028d4b853d92cd238f4c6a3bc4034703cea0d399",
+  "release_notes": "Basit Mod geldi: ana menü sadeleştirildi. Deplasman eklemek artık tarih + şehir + rakip/görev ile yapılır; gidiş-dönüş saatleri isteğe bağlıdır. Seçili deplasmana tek düğmeyle delil eklenir ve otomatik bağlanır. İlk 7 deplasman skorsuz, Bursaspor ve Hatayspor hariç işlendi. Güncelleme klasör kilidi düzeltmesi de bu sürümde.",
   "mandatory": false,
-  "published_at": "2026-10-01T17:03:23.3446079Z"
+  "published_at": "2026-10-01T17:37:59.5475269Z"
 }
