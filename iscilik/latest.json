@@ -1,0 +1,9 @@
+{
+  "version": "1.1.0",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.1.0/IscilikDosyasi_v1.1.0_Windows.zip",
+  "package_root": "IscilikDosyasi",
+  "sha256": "a286466f23b414632350d2f6006c4ec72ad8e7dd201cc0bed222ecab093a4d0b",
+  "release_notes": "Ayarlar > Program Güncelleme sekmesi eklendi. Bundan sonraki sürümler program içinden indirip güncellenebilir. Güncelleme paketi SHA-256 doğrulaması olmadan kurulmaz.",
+  "mandatory": false,
+  "published_at": "2026-10-01T16:41:30.7419089Z"
+}
