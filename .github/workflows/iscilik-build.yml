@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     env:
       QT_QPA_PLATFORM: offscreen
-      VERSION: 1.1.0
+      VERSION: 1.1.1
       REPO: ${{ github.repository }}
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -32,6 +32,11 @@ jobs:
           [IO.File]::WriteAllBytes('source.tar.gz',[Convert]::FromBase64String($b64))
           New-Item -ItemType Directory -Force -Path work | Out-Null
           tar -xzf source.tar.gz -C work
+
+      - name: Apply v1.1.1 requested-data patch
+        shell: pwsh
+        run: |
+          python iscilik/build/patch_v111.py
 
       - name: Add DejaVu fonts
         shell: pwsh
@@ -63,6 +68,7 @@ jobs:
           # Eski-v0.2 fixture klasörü dağıtım kaynak paketine dahil değildir;
           # ayrıca iki UI testi Unix /tmp yolu ve Windows açık-dosya kilidi nedeniyle
           # CI ortamına özgü olarak hariç tutulur. Nihai EXE selftest aşağıda zorunludur.
+          python -m pytest -q tests/test_v111_seed.py
           python -m pytest -q tests/test_a2_evidence_audit.py tests/test_a3_a5_engine.py tests/test_a7_a8_reports_backup.py tests/test_a9_extra.py -k "not metadata_edit_keeps_file_and_logs_full_audit and not legacy"
           python -m pytest -q tests/test_a6_ui.py -k "not restore_through_ui and not window_fits_small_screens"
           python -m compileall -q iscilik_dosyasi main.py
@@ -99,7 +105,7 @@ jobs:
           $tag = "iscilik-v$($env:VERSION)"
           gh release view $tag *> $null
           if ($LASTEXITCODE -eq 0) { gh release delete $tag --cleanup-tag -y }
-          gh release create $tag $zipPath --title "İşçilik Dosyası v$($env:VERSION)" --notes "Program içi güvenli güncelleme sistemi. Dava verileri ve delil kasası güncelleme dışında tutulur."
+          gh release create $tag $zipPath --title "İşçilik Dosyası v$($env:VERSION)" --notes "v1.1.1: Kullanıcının verdiği 7 deplasman kaydı işlendi; Bursaspor ve Hatayspor dahil edilmedi. Program içi güvenli güncelleme sistemi korunur."
 
           $packageUrl = "https://github.com/$env:REPO/releases/download/$tag/$zipName"
           $manifest = [ordered]@{
@@ -107,7 +113,7 @@ jobs:
             package_url = $packageUrl
             package_root = 'IscilikDosyasi'
             sha256 = $sha
-            release_notes = 'Ayarlar > Program Güncelleme sekmesi eklendi. Bundan sonraki sürümler program içinden indirip güncellenebilir. Güncelleme paketi SHA-256 doğrulaması olmadan kurulmaz.'
+            release_notes = '7 deplasman kaydı eklendi: Trabzon, Alanya, Konya, Adana, Gaziantep, Ankara, İzmir. Bursaspor ve Hatayspor dahil edilmedi. Kayıtlar kullanıcı beyanı olarak işlendi; gerçek seyahat saatleri daha sonra delillerle tamamlanabilir.'
             mandatory = $false
             published_at = (Get-Date).ToUniversalTime().ToString('o')
           }
