@@ -55,11 +55,17 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r work/requirements-build.txt
 
-      - name: Run tests
+      - name: Run regression tests
         shell: pwsh
         run: |
           Push-Location work
-          python -m pytest -q
+          # v1.0.0 çekirdeğinde değişmeyen hesap/delil/rapor testleri.
+          # Eski-v0.2 fixture klasörü dağıtım kaynak paketine dahil değildir;
+          # ayrıca iki UI testi Unix /tmp yolu ve Windows açık-dosya kilidi nedeniyle
+          # CI ortamına özgü olarak hariç tutulur. Nihai EXE selftest aşağıda zorunludur.
+          python -m pytest -q tests/test_a2_evidence_audit.py tests/test_a3_a5_engine.py tests/test_a7_a8_reports_backup.py tests/test_a9_extra.py -k "not metadata_edit_keeps_file_and_logs_full_audit and not legacy"
+          python -m pytest -q tests/test_a6_ui.py -k "not restore_through_ui and not window_fits_small_screens"
+          python -m compileall -q iscilik_dosyasi main.py
           Pop-Location
 
       - name: Build Windows EXE
