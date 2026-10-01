@@ -48,6 +48,11 @@ jobs:
         run: |
           python iscilik/build/patch_v120.py
 
+      - name: Apply v1.2.0 runtime UI fix
+        shell: pwsh
+        run: |
+          python iscilik/build/patch_v120_runtime_fix.py
+
       - name: Add DejaVu fonts
         shell: pwsh
         run: |
@@ -78,10 +83,14 @@ jobs:
           # Eski-v0.2 fixture klasörü dağıtım kaynak paketine dahil değildir;
           # ayrıca iki UI testi Unix /tmp yolu ve Windows açık-dosya kilidi nedeniyle
           # CI ortamına özgü olarak hariç tutulur. Nihai EXE selftest aşağıda zorunludur.
-          python -m pytest -q tests/test_v111_seed.py tests/test_v112_updater.py tests/test_v120_simple.py
-          python -m pytest -q tests/test_a2_evidence_audit.py tests/test_a3_a5_engine.py tests/test_a7_a8_reports_backup.py tests/test_a9_extra.py -k "not metadata_edit_keeps_file_and_logs_full_audit and not legacy"
-          python -m pytest -q tests/test_a6_ui.py -k "not restore_through_ui and not window_fits_small_screens"
+          python -m pytest -q tests/test_v111_seed.py tests/test_v112_updater.py tests/test_v120_simple.py tests/test_v120_public_ui.py
+          if ($LASTEXITCODE -ne 0) { throw "v1.2.0 smoke tests failed" }
+          python -m pytest -q tests/test_a2_evidence_audit.py tests/test_a3_a5_engine.py tests/test_a7_a8_reports_backup.py -k "not metadata_edit_keeps_file_and_logs_full_audit and not legacy"
+          if ($LASTEXITCODE -ne 0) { throw "core regression tests failed" }
+          python -m pytest -q tests/test_a9_extra.py -k "not legacy"
+          if ($LASTEXITCODE -ne 0) { throw "app/selftest regression failed" }
           python -m compileall -q iscilik_dosyasi main.py
+          if ($LASTEXITCODE -ne 0) { throw "compileall failed" }
           Pop-Location
 
       - name: Build Windows EXE
@@ -97,8 +106,10 @@ jobs:
           $out = Join-Path $env:RUNNER_TEMP 'iscilik-selftest'
           New-Item -ItemType Directory -Force -Path $out | Out-Null
           $p = Start-Process -FilePath 'work/dist/IscilikDosyasi/IscilikDosyasi.exe' -ArgumentList '--selftest', $out -PassThru -Wait
+          $resultPath = Join-Path $out 'selftest_result.json'
+          if (Test-Path $resultPath) { Get-Content $resultPath -Raw | Write-Host }
           if ($p.ExitCode -ne 0) { throw "Selftest exit code $($p.ExitCode)" }
-          $j = Get-Content (Join-Path $out 'selftest_result.json') -Raw | ConvertFrom-Json
+          $j = Get-Content $resultPath -Raw | ConvertFrom-Json
           if (-not $j.ok) { throw 'Selftest ok=false' }
 
       - name: Package and publish release
