@@ -198,7 +198,7 @@ s = s[:a] + '''    def _build_sidebar(self):
             lay.addWidget(b)
             self.side_buttons[key] = b
         lay.addStretch(1)
-        help_box = QLabel("Kullanım sırası:\n1. Deplasman ekle\n2. Delil ekle\n3. Alacağı hesapla\n4. Dosyayı hazırla")
+        help_box = QLabel("Kullanım sırası:\\n1. Deplasman ekle\\n2. Delil ekle\\n3. Alacağı hesapla\\n4. Dosyayı hazırla")
         help_box.setWordWrap(True)
         help_box.setStyleSheet("color:#c9dbe8;font-size:11px;background:#123b59;padding:9px;border-radius:5px;")
         lay.addWidget(help_box)
@@ -618,6 +618,33 @@ if needle in s and "apply_requested_match_seed(svc)" not in s:
     )
 
 p.write_text(s, "utf-8")
+
+# v1.2.0 ile seed şeması sadeleşti; eski skor/dict testi yerine skorsuz test.
+(ROOT / "tests/test_v111_seed.py").write_text(r'''from iscilik_dosyasi.requested_seed_20261001 import MATCHES, SEED_KEY, apply_requested_match_seed
+from iscilik_dosyasi.service import CaseService
+
+
+def test_requested_match_seed_is_exact_and_idempotent(tmp_path):
+    svc = CaseService(tmp_path / "case", actor="TEST")
+    try:
+        assert len(MATCHES) == 7
+        assert all(len(x) == 3 for x in MATCHES)
+        assert all("Bursaspor" not in x[2] for x in MATCHES)
+        assert all("Hatayspor" not in x[2] for x in MATCHES)
+        assert apply_requested_match_seed(svc) == 7
+        rows = svc.trips()
+        assert len(rows) == 7
+        assert [r["destination"] for r in rows] == ["Trabzon", "Alanya", "Konya", "Adana", "Gaziantep", "Ankara", "İzmir"]
+        assert all("Sonuç:" not in (r["description"] or "") for r in rows)
+        assert all(r["verification_level"] == "KULLANICI_BEYANI" for r in rows)
+        assert all(r["include_in_court"] == 0 for r in rows)
+        assert svc.setting(SEED_KEY) == "1"
+        assert apply_requested_match_seed(svc) == 0
+        assert len(svc.trips()) == 7
+        assert svc.vault.verify_audit_chain()[0]
+    finally:
+        svc.close()
+''', "utf-8")
 
 # ---------- tests ----------
 (ROOT / "tests/test_v120_simple.py").write_text(r'''from pathlib import Path
