@@ -1,9 +1,9 @@
 {
-  "version": "1.2.1",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.1/IscilikDosyasi_v1.2.1_Windows.zip",
+  "version": "1.2.2",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.2/IscilikDosyasi_v1.2.2_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "1f96855b8461e52e17b8da5ff26ec7d1ff4c6704955e66e4f14118bf4598d784",
-  "release_notes": "Saat girişi sadeleştirildi: Yeni Segment yerine Yeni Zaman Kaydı. Görünen alanlar sadece Başlangıç, Bitiş, Bu sürede ne yapıyordum?, Yer ve Kısa Not. İlgili olay, zorunluluk, işveren programı, dinlenme, hukuki sınıf ve doğrulama alanları arka planda yönetilir. v1.2.0 basit menü ve updater düzeltmeleri korunur.",
+  "sha256": "db9b5679dc42d48ea418a908fa8c2fe47a9c8f9882a163a8bc6912fe93c8c2f5",
+  "release_notes": "Deplasman kaydına Ulaşım türü (Uçak/Otobüs/Tren/Özel araç/Diğer), Firma/taşıyıcı ve Uçuş/sefer no alanları eklendi. Ulaşım ve firma Deplasmanlar listesinde de görünür. v1.2.1 sade saat girişi ve önceki updater düzeltmeleri korunur.",
   "mandatory": false,
-  "published_at": "2026-10-01T18:30:11.9309810Z"
+  "published_at": "2026-10-01T18:45:39.9437546Z"
 }
