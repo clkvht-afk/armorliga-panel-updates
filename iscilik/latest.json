@@ -1,9 +1,9 @@
 {
-  "version": "1.2.0",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.0/IscilikDosyasi_v1.2.0_Windows.zip",
+  "version": "1.2.1",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.1/IscilikDosyasi_v1.2.1_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "984bc3b1718a0699c176b539028d4b853d92cd238f4c6a3bc4034703cea0d399",
-  "release_notes": "Basit Mod geldi: ana menü sadeleştirildi. Deplasman eklemek artık tarih + şehir + rakip/görev ile yapılır; gidiş-dönüş saatleri isteğe bağlıdır. Seçili deplasmana tek düğmeyle delil eklenir ve otomatik bağlanır. İlk 7 deplasman skorsuz, Bursaspor ve Hatayspor hariç işlendi. Güncelleme klasör kilidi düzeltmesi de bu sürümde.",
+  "sha256": "1f96855b8461e52e17b8da5ff26ec7d1ff4c6704955e66e4f14118bf4598d784",
+  "release_notes": "Saat girişi sadeleştirildi: Yeni Segment yerine Yeni Zaman Kaydı. Görünen alanlar sadece Başlangıç, Bitiş, Bu sürede ne yapıyordum?, Yer ve Kısa Not. İlgili olay, zorunluluk, işveren programı, dinlenme, hukuki sınıf ve doğrulama alanları arka planda yönetilir. v1.2.0 basit menü ve updater düzeltmeleri korunur.",
   "mandatory": false,
-  "published_at": "2026-10-01T17:37:59.5475269Z"
+  "published_at": "2026-10-01T18:30:11.9309810Z"
 }
