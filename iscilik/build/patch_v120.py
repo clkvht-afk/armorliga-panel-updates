@@ -118,6 +118,11 @@ def apply_requested_match_seed(svc) -> int:
 # ---------- main UI ----------
 p = ROOT / "iscilik_dosyasi/ui_qt.py"
 s = p.read_text("utf-8")
+# Basit dashboard tablo satırlarında QTableWidgetItem kullanılıyor.
+s = s.replace(
+    "QStackedWidget, QTabBar, QTableWidget, QTabWidget, QTextEdit, QVBoxLayout, QWidget)",
+    "QStackedWidget, QTabBar, QTableWidget, QTableWidgetItem, QTabWidget, QTextEdit, QVBoxLayout, QWidget)"
+)
 
 s = s.replace(
 '''from .ui_dialogs import (RelationsDialog, SegmentEditor, calc_detail_html, ceiling_fields, claim_fields, event_fields,
