@@ -1,9 +1,9 @@
 {
-  "version": "1.1.1",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.1.1/IscilikDosyasi_v1.1.1_Windows.zip",
+  "version": "1.1.2",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.1.2/IscilikDosyasi_v1.1.2_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "74eef96ed90d712d21308722248b823b62d6064675ff525455a76d40ac260c5b",
-  "release_notes": "7 deplasman kaydı eklendi: Trabzon, Alanya, Konya, Adana, Gaziantep, Ankara, İzmir. Bursaspor ve Hatayspor dahil edilmedi. Kayıtlar kullanıcı beyanı olarak işlendi; gerçek seyahat saatleri daha sonra delillerle tamamlanabilir.",
+  "sha256": "cbff68e51e404d91924a6762698c02cc87499c5f77dd0941356b4e2fa862272d",
+  "release_notes": "Kritik düzeltme: Program içinden İndir ve Güncelle işleminde görülen Windows klasör kilidi/Rename-Item hatası giderildi. Güncelleyici artık program klasörü dışında çalışır. 7 deplasman kaydı (Bursaspor ve Hatayspor hariç) korunur.",
   "mandatory": false,
-  "published_at": "2026-10-01T16:55:16.0471013Z"
+  "published_at": "2026-10-01T17:03:23.3446079Z"
 }
