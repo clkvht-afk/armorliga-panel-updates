@@ -1,9 +1,9 @@
 {
-  "version": "1.2.3",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.3/IscilikDosyasi_v1.2.3_Windows.zip",
+  "version": "1.2.4",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.4/IscilikDosyasi_v1.2.4_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "56d49524c510da93b1f931d64bec35bb1b2a8e93f63cded13911d16056a2a0f9",
-  "release_notes": "43 seçilmiş deplasman (2022/23-2025/26) hazır eklendi; Türkiye Ligi / UEFA Youth League ayrımı ve düzenlenebilir Ülke + Organizasyon alanları eklendi. Uçak/Otobüs, firma ve sefer no düzenlenebilir. 2026/27 otomatik eklenmez.",
+  "sha256": "3d6f00cd34f4f6450a9b27737a460da8a5324ec9460fd1090ab482c3b0456711",
+  "release_notes": "Maç tarihi gidiş/dönüş gibi gösterilmez; bilinmeyen saatler boş/— görünür. Gidiş, İstanbul dönüşü, tesise dönüş ve gerçek iş bitişi ayrıldı. Takım U17/U19/U19-PAF listede ve notlarda görünür. Gidiş + gerçek iş bitişinden ham görev süresi otomatik hesaplanır.",
   "mandatory": false,
-  "published_at": "2026-10-02T14:51:35.8532799Z"
+  "published_at": "2026-10-02T16:00:54.0805889Z"
 }
