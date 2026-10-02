@@ -1,9 +1,9 @@
 {
-  "version": "1.2.2",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.2/IscilikDosyasi_v1.2.2_Windows.zip",
+  "version": "1.2.3",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.3/IscilikDosyasi_v1.2.3_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "db9b5679dc42d48ea418a908fa8c2fe47a9c8f9882a163a8bc6912fe93c8c2f5",
-  "release_notes": "Deplasman kaydına Ulaşım türü (Uçak/Otobüs/Tren/Özel araç/Diğer), Firma/taşıyıcı ve Uçuş/sefer no alanları eklendi. Ulaşım ve firma Deplasmanlar listesinde de görünür. v1.2.1 sade saat girişi ve önceki updater düzeltmeleri korunur.",
+  "sha256": "56d49524c510da93b1f931d64bec35bb1b2a8e93f63cded13911d16056a2a0f9",
+  "release_notes": "43 seçilmiş deplasman (2022/23-2025/26) hazır eklendi; Türkiye Ligi / UEFA Youth League ayrımı ve düzenlenebilir Ülke + Organizasyon alanları eklendi. Uçak/Otobüs, firma ve sefer no düzenlenebilir. 2026/27 otomatik eklenmez.",
   "mandatory": false,
-  "published_at": "2026-10-01T18:45:39.9437546Z"
+  "published_at": "2026-10-02T14:51:35.8532799Z"
 }
