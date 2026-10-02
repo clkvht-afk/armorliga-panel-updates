@@ -30,6 +30,13 @@ from __future__ import annotations
 
 SEED_KEY = "requested_match_seed_20261002_full_v3"
 
+SEASON_BOUNDS = {
+    "2022/23": ("2022-07-01", "2023-06-30"),
+    "2023/24": ("2023-07-01", "2024-06-30"),
+    "2024/25": ("2024-07-01", "2025-06-30"),
+    "2025/26": ("2025-07-01", "2026-06-30"),
+}
+
 MATCHES = [
     # 2022/23 U17 — Türkiye (Bursaspor ve Hatayspor kullanıcı talebiyle YOK)
     {"date":"2022-10-26","season":"2022/23","team":"U17","city":"Trabzon","country":"Türkiye","opponent":"Trabzonspor","competition":"Türkiye Ligi"},
@@ -99,9 +106,12 @@ def apply_requested_match_seed(svc) -> int:
     added = 0
     for row in MATCHES:
         title = _title(row)
+        season_start, season_end = SEASON_BOUNDS[row["season"]]
         existing = svc.db.q1(
-            "SELECT code,country,purpose FROM trips WHERE destination=? AND title=? AND status='AKTIF' LIMIT 1",
-            (row["city"], title),
+            "SELECT code,country,purpose FROM trips "
+            "WHERE destination=? AND title=? AND status='AKTIF' "
+            "AND substr(start_dt,1,10) BETWEEN ? AND ? LIMIT 1",
+            (row["city"], title, season_start, season_end),
         )
         if existing:
             # Kullanıcının seyahat saati, ulaşım türü, firma, sefer no ve notlarına dokunma.
