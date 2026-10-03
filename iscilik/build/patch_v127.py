@@ -8,7 +8,7 @@ def show(name):
     m = re.search(rf"(?m)^    def {re.escape(name)}\(.*?(?=^    def |\Z)", s, re.S)
     print(f"\n===== {name} =====")
     if m:
-        print(m.group(0)[:12000])
+        print(m.group(0)[:12000].encode("ascii","backslashreplace").decode("ascii"))
     else:
         print("NOT FOUND")
 
