@@ -13,7 +13,7 @@ jobs:
     runs-on: windows-latest
     env:
       QT_QPA_PLATFORM: offscreen
-      VERSION: 1.2.6
+      VERSION: 1.2.7
       REPO: ${{ github.repository }}
       GH_TOKEN: ${{ github.token }}
     steps:
@@ -83,7 +83,7 @@ jobs:
         run: |
           python iscilik/build/patch_v126.py
 
-      - name: Inspect v1.2.7 page performance
+      - name: Apply v1.2.7 instant navigation and bulk query patch
         shell: pwsh
         run: |
           python iscilik/build/patch_v127.py
@@ -118,7 +118,7 @@ jobs:
           # Eski-v0.2 fixture klasörü dağıtım kaynak paketine dahil değildir;
           # ayrıca iki UI testi Unix /tmp yolu ve Windows açık-dosya kilidi nedeniyle
           # CI ortamına özgü olarak hariç tutulur. Nihai EXE selftest aşağıda zorunludur.
-          python -m pytest -q tests/test_v111_seed.py tests/test_v112_updater.py tests/test_v120_simple.py tests/test_v120_public_ui.py tests/test_v121_simple_segment.py tests/test_v122_transport.py tests/test_v123_full_fixture.py tests/test_v124_trip_times.py tests/test_v125_work_start.py tests/test_v126_perf_totals.py
+          python -m pytest -q tests/test_v111_seed.py tests/test_v112_updater.py tests/test_v120_simple.py tests/test_v120_public_ui.py tests/test_v121_simple_segment.py tests/test_v122_transport.py tests/test_v123_full_fixture.py tests/test_v124_trip_times.py tests/test_v125_work_start.py tests/test_v126_perf_totals.py tests/test_v127_navigation_perf.py
           if ($LASTEXITCODE -ne 0) { throw "version smoke tests failed" }
           python -m pytest -q tests/test_a2_evidence_audit.py tests/test_a3_a5_engine.py tests/test_a7_a8_reports_backup.py -k "not metadata_edit_keeps_file_and_logs_full_audit and not legacy"
           if ($LASTEXITCODE -ne 0) { throw "core regression tests failed" }
@@ -161,7 +161,7 @@ jobs:
           $tag = "iscilik-v$($env:VERSION)"
           gh release view $tag *> $null
           if ($LASTEXITCODE -eq 0) { gh release delete $tag --cleanup-tag -y }
-          gh release create $tag $zipPath --title "İşçilik Dosyası v$($env:VERSION)" --notes "v1.2.6: Deplasman ekranı hızlandırıldı. Toplam/net çalışma ve girilmiş kayıtlara göre haftalık 45 saat üstü fazla mesai görünür. Samsun örneği 45 saat hesaplanır. Dönüş işleri için hazır tikler ve tam kayıtta yeşil satır eklendi."
+          gh release create $tag $zipPath --title "İşçilik Dosyası v$($env:VERSION)" --notes "v1.2.7: Sayfa değiştirirken global refresh_all kaldırıldı. Sayfalar önbellekli/lazy yenilenir, timeline kayıtları tek sorguda toplu yüklenir, gizli tablolar doldurulmaz ve arama debounce edildi."
 
           $packageUrl = "https://github.com/$env:REPO/releases/download/$tag/$zipName"
           $manifest = [ordered]@{
@@ -169,7 +169,7 @@ jobs:
             package_url = $packageUrl
             package_root = 'IscilikDosyasi'
             sha256 = $sha
-            release_notes = 'Deplasman ekranı hızlandırıldı. Net/Toplam Çalışma ve girilmiş kayıtlara göre haftalık 45 saat üzeri Fazla Mesai görünür. Dönüş işleri için hazır tikler ve tam doldurulan kayıtta yeşil satır eklendi.'
+            release_notes = 'Sayfa geçişlerinde global yenileme kaldırıldı; ekranlar önbellekli/lazy çalışır. Deplasman timeline kayıtları tek sorguda toplu yüklenir, gizli tablolar gereksiz doldurulmaz ve arama debounce edilmiştir.'
             mandatory = $false
             published_at = (Get-Date).ToUniversalTime().ToString('o')
           }
