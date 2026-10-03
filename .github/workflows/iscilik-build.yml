@@ -83,6 +83,11 @@ jobs:
         run: |
           python iscilik/build/patch_v126.py
 
+      - name: Inspect v1.2.7 page performance
+        shell: pwsh
+        run: |
+          python iscilik/build/patch_v127.py
+
       - name: Add DejaVu fonts
         shell: pwsh
         run: |
