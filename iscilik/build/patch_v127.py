@@ -1,23 +1,17 @@
 from pathlib import Path
 import re
 
-p = Path("work/iscilik_dosyasi/ui_qt.py")
-s = p.read_text("utf-8")
-
-def show(name):
-    m = re.search(rf"(?m)^    def {re.escape(name)}\(.*?(?=^    def |\Z)", s, re.S)
-    print(f"\n===== {name} =====")
+def show(path, name):
+    s=Path(path).read_text("utf-8")
+    m=re.search(rf"(?m)^    def {re.escape(name)}\(.*?(?=^    def |\Z)", s, re.S)
+    print(f"\n===== {path} :: {name} =====")
     if m:
-        print(m.group(0)[:12000].encode("ascii","backslashreplace").decode("ascii"))
+        print(m.group(0)[:16000].encode("ascii","backslashreplace").decode("ascii"))
     else:
         print("NOT FOUND")
 
-for name in [
-    "switch_page", "refresh_all", "_rels", "refresh_cards",
-    "refresh_evidence_page", "refresh_events_page",
-    "refresh_simple_dashboard", "refresh_calc_summary",
-    "refresh_reports_page", "_fill_event_filters"
-]:
-    show(name)
-
+for name in ["_preload","refresh_all","switch_page","refresh_calc_page","refresh_settings_page"]:
+    show("work/iscilik_dosyasi/ui_qt.py",name)
+for name in ["segments","trips","events","list_evidence","relations","related_codes"]:
+    show("work/iscilik_dosyasi/service.py",name)
 raise SystemExit("PERF_INSPECTION_ONLY")
