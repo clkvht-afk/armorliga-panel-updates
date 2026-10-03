@@ -1,9 +1,9 @@
 {
-  "version": "1.2.4",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.4/IscilikDosyasi_v1.2.4_Windows.zip",
+  "version": "1.2.5",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.5/IscilikDosyasi_v1.2.5_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "3d6f00cd34f4f6450a9b27737a460da8a5324ec9460fd1090ab482c3b0456711",
-  "release_notes": "Maç tarihi gidiş/dönüş gibi gösterilmez; bilinmeyen saatler boş/— görünür. Gidiş, İstanbul dönüşü, tesise dönüş ve gerçek iş bitişi ayrıldı. Takım U17/U19/U19-PAF listede ve notlarda görünür. Gidiş + gerçek iş bitişinden ham görev süresi otomatik hesaplanır.",
+  "sha256": "6a46c143804287e772975ba3f05f3018bb12ebbd322c5142097cdf6992fc7783",
+  "release_notes": "İşe başlama ile uçuş/sefer hareketi ayrı alanlardır. Mevcut Gidiş bilgisi uçuş/sefer olarak korunur. Görev Süresi İşe Başlama → Gerçek İş Bitişi arasından hesaplanır.",
   "mandatory": false,
-  "published_at": "2026-10-02T16:00:54.0805889Z"
+  "published_at": "2026-10-03T13:54:01.3921302Z"
 }
