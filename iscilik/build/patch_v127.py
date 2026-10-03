@@ -30,6 +30,10 @@ if not m:
 
 new_switch = r'''    def _refresh_page_only(self, key, force=False):
         """Refresh only one page. Page-to-page navigation must never call refresh_all."""
+        # İlk pencere açılışında ilişki önbelleği henüz kurulmamış olabilir.
+        # Bunu yalnız BİR KEZ hazırla; sayfa geçişlerinde tekrar sorgulama.
+        if not hasattr(self, "_rel"):
+            self._preload()
         loaded = getattr(self, "_page_loaded", set())
         dirty = getattr(self, "_page_dirty", set())
         if not force and key in loaded and key not in dirty:
