@@ -1,9 +1,9 @@
 {
-  "version": "1.2.5",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.5/IscilikDosyasi_v1.2.5_Windows.zip",
+  "version": "1.2.6",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.6/IscilikDosyasi_v1.2.6_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "6a46c143804287e772975ba3f05f3018bb12ebbd322c5142097cdf6992fc7783",
-  "release_notes": "İşe başlama ile uçuş/sefer hareketi ayrı alanlardır. Mevcut Gidiş bilgisi uçuş/sefer olarak korunur. Görev Süresi İşe Başlama → Gerçek İş Bitişi arasından hesaplanır.",
+  "sha256": "2e969c2c6f56a20d6d59cbfe166c128f15f80829dd9ff27d34ef6485516c1e7d",
+  "release_notes": "Deplasman ekranı hızlandırıldı. Net/Toplam Çalışma ve girilmiş kayıtlara göre haftalık 45 saat üzeri Fazla Mesai görünür. Dönüş işleri için hazır tikler ve tam doldurulan kayıtta yeşil satır eklendi.",
   "mandatory": false,
-  "published_at": "2026-10-03T13:54:01.3921302Z"
+  "published_at": "2026-10-03T14:16:54.9168066Z"
 }
