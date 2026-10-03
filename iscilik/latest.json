@@ -1,9 +1,9 @@
 {
-  "version": "1.2.6",
-  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.6/IscilikDosyasi_v1.2.6_Windows.zip",
+  "version": "1.2.7",
+  "package_url": "https://github.com/clkvht-afk/armorliga-panel-updates/releases/download/iscilik-v1.2.7/IscilikDosyasi_v1.2.7_Windows.zip",
   "package_root": "IscilikDosyasi",
-  "sha256": "2e969c2c6f56a20d6d59cbfe166c128f15f80829dd9ff27d34ef6485516c1e7d",
-  "release_notes": "Deplasman ekranı hızlandırıldı. Net/Toplam Çalışma ve girilmiş kayıtlara göre haftalık 45 saat üzeri Fazla Mesai görünür. Dönüş işleri için hazır tikler ve tam doldurulan kayıtta yeşil satır eklendi.",
+  "sha256": "9d12f23ebb9195e8d59d664124d285a44e1124e272a8040264bdcdd0ecc5c6f4",
+  "release_notes": "Sayfa geçişlerinde global yenileme kaldırıldı; ekranlar önbellekli/lazy çalışır. Deplasman timeline kayıtları tek sorguda toplu yüklenir, gizli tablolar gereksiz doldurulmaz ve arama debounce edilmiştir.",
   "mandatory": false,
-  "published_at": "2026-10-03T14:16:54.9168066Z"
+  "published_at": "2026-10-03T14:32:46.6209601Z"
 }
